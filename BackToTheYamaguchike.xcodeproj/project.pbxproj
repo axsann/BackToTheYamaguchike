@@ -1,0 +1,423 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		B71B67941A7A46760056DAC4 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B71B67931A7A46760056DAC4 /* AppDelegate.m */; };
+		B71B67961A7A46760056DAC4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B71B67951A7A46760056DAC4 /* main.m */; };
+		B71B67991A7A46760056DAC4 /* GameScene.m in Sources */ = {isa = PBXBuildFile; fileRef = B71B67981A7A46760056DAC4 /* GameScene.m */; };
+		B71B679B1A7A46760056DAC4 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = B71B679A1A7A46760056DAC4 /* GameScene.sks */; };
+		B71B679D1A7A46760056DAC4 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B71B679C1A7A46760056DAC4 /* Images.xcassets */; };
+		B71B67A01A7A46760056DAC4 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = B71B679E1A7A46760056DAC4 /* MainMenu.xib */; };
+		B71B67AC1A7A46760056DAC4 /* BackToTheYamaguchikeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B71B67AB1A7A46760056DAC4 /* BackToTheYamaguchikeTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		B71B67A61A7A46760056DAC4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B71B67851A7A46760056DAC4 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B71B678C1A7A46760056DAC4;
+			remoteInfo = BackToTheYamaguchike;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		B71B678D1A7A46760056DAC4 /* BackToTheYamaguchike.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BackToTheYamaguchike.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B71B67911A7A46760056DAC4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B71B67921A7A46760056DAC4 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		B71B67931A7A46760056DAC4 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		B71B67951A7A46760056DAC4 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		B71B67971A7A46760056DAC4 /* GameScene.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GameScene.h; sourceTree = "<group>"; };
+		B71B67981A7A46760056DAC4 /* GameScene.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GameScene.m; sourceTree = "<group>"; };
+		B71B679A1A7A46760056DAC4 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
+		B71B679C1A7A46760056DAC4 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		B71B679F1A7A46760056DAC4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		B71B67A51A7A46760056DAC4 /* BackToTheYamaguchikeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BackToTheYamaguchikeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		B71B67AA1A7A46760056DAC4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B71B67AB1A7A46760056DAC4 /* BackToTheYamaguchikeTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BackToTheYamaguchikeTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		B71B678A1A7A46760056DAC4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B71B67A21A7A46760056DAC4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		B71B67841A7A46760056DAC4 = {
+			isa = PBXGroup;
+			children = (
+				B71B678F1A7A46760056DAC4 /* BackToTheYamaguchike */,
+				B71B67A81A7A46760056DAC4 /* BackToTheYamaguchikeTests */,
+				B71B678E1A7A46760056DAC4 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		B71B678E1A7A46760056DAC4 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B71B678D1A7A46760056DAC4 /* BackToTheYamaguchike.app */,
+				B71B67A51A7A46760056DAC4 /* BackToTheYamaguchikeTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		B71B678F1A7A46760056DAC4 /* BackToTheYamaguchike */ = {
+			isa = PBXGroup;
+			children = (
+				B71B67921A7A46760056DAC4 /* AppDelegate.h */,
+				B71B67931A7A46760056DAC4 /* AppDelegate.m */,
+				B71B67971A7A46760056DAC4 /* GameScene.h */,
+				B71B67981A7A46760056DAC4 /* GameScene.m */,
+				B71B679A1A7A46760056DAC4 /* GameScene.sks */,
+				B71B679C1A7A46760056DAC4 /* Images.xcassets */,
+				B71B679E1A7A46760056DAC4 /* MainMenu.xib */,
+				B71B67901A7A46760056DAC4 /* Supporting Files */,
+			);
+			path = BackToTheYamaguchike;
+			sourceTree = "<group>";
+		};
+		B71B67901A7A46760056DAC4 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				B71B67911A7A46760056DAC4 /* Info.plist */,
+				B71B67951A7A46760056DAC4 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		B71B67A81A7A46760056DAC4 /* BackToTheYamaguchikeTests */ = {
+			isa = PBXGroup;
+			children = (
+				B71B67AB1A7A46760056DAC4 /* BackToTheYamaguchikeTests.m */,
+				B71B67A91A7A46760056DAC4 /* Supporting Files */,
+			);
+			path = BackToTheYamaguchikeTests;
+			sourceTree = "<group>";
+		};
+		B71B67A91A7A46760056DAC4 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				B71B67AA1A7A46760056DAC4 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		B71B678C1A7A46760056DAC4 /* BackToTheYamaguchike */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B71B67AF1A7A46760056DAC4 /* Build configuration list for PBXNativeTarget "BackToTheYamaguchike" */;
+			buildPhases = (
+				B71B67891A7A46760056DAC4 /* Sources */,
+				B71B678A1A7A46760056DAC4 /* Frameworks */,
+				B71B678B1A7A46760056DAC4 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = BackToTheYamaguchike;
+			productName = BackToTheYamaguchike;
+			productReference = B71B678D1A7A46760056DAC4 /* BackToTheYamaguchike.app */;
+			productType = "com.apple.product-type.application";
+		};
+		B71B67A41A7A46760056DAC4 /* BackToTheYamaguchikeTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B71B67B21A7A46760056DAC4 /* Build configuration list for PBXNativeTarget "BackToTheYamaguchikeTests" */;
+			buildPhases = (
+				B71B67A11A7A46760056DAC4 /* Sources */,
+				B71B67A21A7A46760056DAC4 /* Frameworks */,
+				B71B67A31A7A46760056DAC4 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B71B67A71A7A46760056DAC4 /* PBXTargetDependency */,
+			);
+			name = BackToTheYamaguchikeTests;
+			productName = BackToTheYamaguchikeTests;
+			productReference = B71B67A51A7A46760056DAC4 /* BackToTheYamaguchikeTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		B71B67851A7A46760056DAC4 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0610;
+				ORGANIZATIONNAME = kanta;
+				TargetAttributes = {
+					B71B678C1A7A46760056DAC4 = {
+						CreatedOnToolsVersion = 6.1.1;
+					};
+					B71B67A41A7A46760056DAC4 = {
+						CreatedOnToolsVersion = 6.1.1;
+						TestTargetID = B71B678C1A7A46760056DAC4;
+					};
+				};
+			};
+			buildConfigurationList = B71B67881A7A46760056DAC4 /* Build configuration list for PBXProject "BackToTheYamaguchike" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = B71B67841A7A46760056DAC4;
+			productRefGroup = B71B678E1A7A46760056DAC4 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				B71B678C1A7A46760056DAC4 /* BackToTheYamaguchike */,
+				B71B67A41A7A46760056DAC4 /* BackToTheYamaguchikeTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		B71B678B1A7A46760056DAC4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B71B679B1A7A46760056DAC4 /* GameScene.sks in Resources */,
+				B71B679D1A7A46760056DAC4 /* Images.xcassets in Resources */,
+				B71B67A01A7A46760056DAC4 /* MainMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B71B67A31A7A46760056DAC4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		B71B67891A7A46760056DAC4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B71B67961A7A46760056DAC4 /* main.m in Sources */,
+				B71B67991A7A46760056DAC4 /* GameScene.m in Sources */,
+				B71B67941A7A46760056DAC4 /* AppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B71B67A11A7A46760056DAC4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B71B67AC1A7A46760056DAC4 /* BackToTheYamaguchikeTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		B71B67A71A7A46760056DAC4 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B71B678C1A7A46760056DAC4 /* BackToTheYamaguchike */;
+			targetProxy = B71B67A61A7A46760056DAC4 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		B71B679E1A7A46760056DAC4 /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B71B679F1A7A46760056DAC4 /* Base */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		B71B67AD1A7A46760056DAC4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		B71B67AE1A7A46760056DAC4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		B71B67B01A7A46760056DAC4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = BackToTheYamaguchike/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		B71B67B11A7A46760056DAC4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = BackToTheYamaguchike/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		B71B67B31A7A46760056DAC4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = BackToTheYamaguchikeTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BackToTheYamaguchike.app/Contents/MacOS/BackToTheYamaguchike";
+			};
+			name = Debug;
+		};
+		B71B67B41A7A46760056DAC4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = BackToTheYamaguchikeTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BackToTheYamaguchike.app/Contents/MacOS/BackToTheYamaguchike";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		B71B67881A7A46760056DAC4 /* Build configuration list for PBXProject "BackToTheYamaguchike" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B71B67AD1A7A46760056DAC4 /* Debug */,
+				B71B67AE1A7A46760056DAC4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B71B67AF1A7A46760056DAC4 /* Build configuration list for PBXNativeTarget "BackToTheYamaguchike" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B71B67B01A7A46760056DAC4 /* Debug */,
+				B71B67B11A7A46760056DAC4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		B71B67B21A7A46760056DAC4 /* Build configuration list for PBXNativeTarget "BackToTheYamaguchikeTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B71B67B31A7A46760056DAC4 /* Debug */,
+				B71B67B41A7A46760056DAC4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = B71B67851A7A46760056DAC4 /* Project object */;
+}
