@@ -1,0 +1,22 @@
+{
+    "edo": {
+        "edo_kasa": "30.0",
+        "edo_onna": "25.0",
+        "edo_otoko": "20.0"
+    },
+    "meiji": {
+        "meiji_kodomo": "20.0",
+        "meiji_onna": "15.0",
+        "meiji_otoko": "10.0"
+    },
+    "shouwa": {
+        "shouwa_kodomo": "20.0",
+        "shouwa_onna": "15.0",
+        "shouwa_otoko": "10.0"
+    },
+    "heisei": {
+        "heisei_kodomo": "20.0",
+        "heisei_onna": "15.0",
+        "heisei_otoko": "10.0"
+    }
+}

@@ -14,6 +14,13 @@
 		B71B679D1A7A46760056DAC4 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B71B679C1A7A46760056DAC4 /* Images.xcassets */; };
 		B71B67A01A7A46760056DAC4 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = B71B679E1A7A46760056DAC4 /* MainMenu.xib */; };
 		B71B67AC1A7A46760056DAC4 /* BackToTheYamaguchikeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B71B67AB1A7A46760056DAC4 /* BackToTheYamaguchikeTests.m */; };
+		B71B67B81A7B66E00056DAC4 /* people.json in Resources */ = {isa = PBXBuildFile; fileRef = B71B67B71A7B66E00056DAC4 /* people.json */; };
+		B71B67C21A7C9C9E0056DAC4 /* edo_kasa.atlas in Resources */ = {isa = PBXBuildFile; fileRef = B71B67BF1A7C9C9E0056DAC4 /* edo_kasa.atlas */; };
+		B71B67C31A7C9C9E0056DAC4 /* edo_onna.atlas in Resources */ = {isa = PBXBuildFile; fileRef = B71B67C01A7C9C9E0056DAC4 /* edo_onna.atlas */; };
+		B71B67C41A7C9C9E0056DAC4 /* edo_otoko.atlas in Resources */ = {isa = PBXBuildFile; fileRef = B71B67C11A7C9C9E0056DAC4 /* edo_otoko.atlas */; };
+		B7D875441A7CED0D0083106B /* meiji_kodomo.atlas in Resources */ = {isa = PBXBuildFile; fileRef = B7D875411A7CED0D0083106B /* meiji_kodomo.atlas */; };
+		B7D875451A7CED0D0083106B /* meiji_onna.atlas in Resources */ = {isa = PBXBuildFile; fileRef = B7D875421A7CED0D0083106B /* meiji_onna.atlas */; };
+		B7D875461A7CED0D0083106B /* meiji_otoko.atlas in Resources */ = {isa = PBXBuildFile; fileRef = B7D875431A7CED0D0083106B /* meiji_otoko.atlas */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +47,13 @@
 		B71B67A51A7A46760056DAC4 /* BackToTheYamaguchikeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BackToTheYamaguchikeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B71B67AA1A7A46760056DAC4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B71B67AB1A7A46760056DAC4 /* BackToTheYamaguchikeTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BackToTheYamaguchikeTests.m; sourceTree = "<group>"; };
+		B71B67B71A7B66E00056DAC4 /* people.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = people.json; sourceTree = "<group>"; };
+		B71B67BF1A7C9C9E0056DAC4 /* edo_kasa.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = edo_kasa.atlas; sourceTree = "<group>"; };
+		B71B67C01A7C9C9E0056DAC4 /* edo_onna.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = edo_onna.atlas; sourceTree = "<group>"; };
+		B71B67C11A7C9C9E0056DAC4 /* edo_otoko.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = edo_otoko.atlas; sourceTree = "<group>"; };
+		B7D875411A7CED0D0083106B /* meiji_kodomo.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = meiji_kodomo.atlas; sourceTree = "<group>"; };
+		B7D875421A7CED0D0083106B /* meiji_onna.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = meiji_onna.atlas; sourceTree = "<group>"; };
+		B7D875431A7CED0D0083106B /* meiji_otoko.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = meiji_otoko.atlas; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +95,13 @@
 		B71B678F1A7A46760056DAC4 /* BackToTheYamaguchike */ = {
 			isa = PBXGroup;
 			children = (
+				B71B67B71A7B66E00056DAC4 /* people.json */,
+				B71B67BF1A7C9C9E0056DAC4 /* edo_kasa.atlas */,
+				B71B67C01A7C9C9E0056DAC4 /* edo_onna.atlas */,
+				B71B67C11A7C9C9E0056DAC4 /* edo_otoko.atlas */,
+				B7D875411A7CED0D0083106B /* meiji_kodomo.atlas */,
+				B7D875421A7CED0D0083106B /* meiji_onna.atlas */,
+				B7D875431A7CED0D0083106B /* meiji_otoko.atlas */,
 				B71B67921A7A46760056DAC4 /* AppDelegate.h */,
 				B71B67931A7A46760056DAC4 /* AppDelegate.m */,
 				B71B67971A7A46760056DAC4 /* GameScene.h */,
@@ -199,9 +220,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B71B67C21A7C9C9E0056DAC4 /* edo_kasa.atlas in Resources */,
+				B71B67B81A7B66E00056DAC4 /* people.json in Resources */,
+				B71B67C31A7C9C9E0056DAC4 /* edo_onna.atlas in Resources */,
+				B7D875451A7CED0D0083106B /* meiji_onna.atlas in Resources */,
+				B7D875441A7CED0D0083106B /* meiji_kodomo.atlas in Resources */,
 				B71B679B1A7A46760056DAC4 /* GameScene.sks in Resources */,
+				B71B67C41A7C9C9E0056DAC4 /* edo_otoko.atlas in Resources */,
 				B71B679D1A7A46760056DAC4 /* Images.xcassets in Resources */,
 				B71B67A01A7A46760056DAC4 /* MainMenu.xib in Resources */,
+				B7D875461A7CED0D0083106B /* meiji_otoko.atlas in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -408,6 +436,7 @@
 				B71B67B11A7A46760056DAC4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		B71B67B21A7A46760056DAC4 /* Build configuration list for PBXNativeTarget "BackToTheYamaguchikeTests" */ = {
 			isa = XCConfigurationList;
@@ -416,6 +445,7 @@
 				B71B67B41A7A46760056DAC4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

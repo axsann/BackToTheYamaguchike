@@ -33,6 +33,7 @@
 @synthesize window = _window;
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
+    self.peopleDict = [self loadJson];
     GameScene *scene = [GameScene unarchiveFromFile:@"GameScene"];
 
     /* Set the scale mode to scale to fit the window */
@@ -45,6 +46,15 @@
     
     self.skView.showsFPS = YES;
     self.skView.showsNodeCount = YES;
+}
+
+-(NSDictionary *)loadJson {
+    NSString *filePath = [[NSBundle mainBundle] pathForResource:@"people" ofType:@"json"];
+    NSFileHandle *fileHandle = [NSFileHandle fileHandleForReadingAtPath:filePath];
+    NSData *data =[fileHandle readDataToEndOfFile];
+    NSDictionary *results = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:nil];
+    NSLog(@"%@", results);
+    return results;
 }
 
 - (BOOL)applicationShouldTerminateAfterLastWindowClosed:(NSApplication *)sender {
