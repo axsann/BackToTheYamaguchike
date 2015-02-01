@@ -161,7 +161,7 @@
     for (SKSpriteNode *people in peopleNodeArray) {
         NSString *peopleSpeedRateStr = edoPeopleDict[people.name]; // DictからSpeedRateを文字列型で取得
         float peopleSpeedRate = [peopleSpeedRateStr floatValue]; // SpeedRateを小数に変換
-        float peopleSpeed = BG_ORIGIN_WIDTH / peopleSpeedRate; // スクリーンの幅をSpeedRateで割ったものをスピードにする
+        float peopleSpeed = BG_ORIGIN_WIDTH / peopleSpeedRate; // 背景の幅をSpeedRateで割ったものをスピードにする
         float distance = fabs(people.position.x - leftEdgeX);
         float moveDuration = distance / peopleSpeed;
         people.xScale = fabs(people.xScale);
@@ -179,7 +179,7 @@
     for (SKSpriteNode *people in peopleNodeArray) {
         NSString *peopleSpeedRateStr = edoPeopleDict[people.name]; // DictからSpeedRateを文字列型で取得
         float peopleSpeedRate = [peopleSpeedRateStr floatValue]; // SpeedRateを小数に変換
-        float peopleSpeed = BG_ORIGIN_WIDTH / peopleSpeedRate; // スクリーンの幅をSpeedRateで割ったものをスピードにする
+        float peopleSpeed = BG_ORIGIN_WIDTH / peopleSpeedRate; // 背景の幅をSpeedRateで割ったものをスピードにする
         if (people.position.x == rightEdgeX) {
             float distance = fabs(people.position.x - leftEdgeX);
             float moveDuration = distance / peopleSpeed;
