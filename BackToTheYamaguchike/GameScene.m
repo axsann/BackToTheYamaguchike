@@ -11,7 +11,7 @@
 #define BG_SCALE 0.93f
 #define BG_ORIGIN_WIDTH 930
 #define BG_ORIGIN_HIGHT 256
-#define INTERVAL 24.0f
+#define INTERVAL 18.0f
 
 @implementation GameScene {
     AppDelegate *app;
@@ -41,7 +41,7 @@
     // Called before each frame is rendered
     [self moveAllEraPeopleLoop];
     [self moveBgIn30secInterval:currentTime];
-    [self moveBgToFirst];
+    [self moveBgToLast];
 }
 
 -(void)addAllEraBg {
@@ -54,15 +54,18 @@
 -(void)addAllEraPeople {
     [self addPeopleWithEraName:@"edo"];
     [self addPeopleWithEraName:@"meiji"];
+    [self addPeopleWithEraName:@"shouwa"];
 }
 
 -(void)moveAllEraPeopleOnce {
     [self movePeopleOnceWithEraName:@"edo"];
     [self movePeopleOnceWithEraName:@"meiji"];
+    [self movePeopleOnceWithEraName:@"shouwa"];
 }
 -(void)moveAllEraPeopleLoop {
     [self movePeopleLoopWithEraName:@"edo"];
     [self movePeopleLoopWithEraName:@"meiji"];
+    [self movePeopleLoopWithEraName:@"shouwa"];
 }
 
 -(void)moveBgIn30secInterval:(CFTimeInterval)currentTime {
@@ -78,18 +81,18 @@
 
 -(void)moveBg {
     CGSize screenSize = self.frame.size;
-    float distanceY = screenSize.height/3*-1;
+    float distanceY = screenSize.height/3;
     for (SKSpriteNode *bg in _bgNodeArray) {
-        SKAction *moveDownAction = [SKAction moveByX:0 y:distanceY duration:10];
-        [bg runAction:moveDownAction];
+        SKAction *moveUpAction = [SKAction moveByX:0 y:distanceY duration:10];
+        [bg runAction:moveUpAction];
     }
 }
 
--(void)moveBgToFirst {
+-(void)moveBgToLast {
     CGSize screenSize = self.frame.size;
-    float positionY = screenSize.height+(screenSize.height/3)/2;
+    float positionY = -(screenSize.height/3)/2;
     for (SKSpriteNode *bg in _bgNodeArray) {
-        if (bg.position.y <= -(screenSize.height/3)/2) {
+        if (bg.position.y >= screenSize.height+(screenSize.height/3)/2) {
             bg.position = CGPointMake(bg.position.x, positionY);
         }
     }
