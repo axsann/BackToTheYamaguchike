@@ -44,7 +44,7 @@
 -(void)update:(CFTimeInterval)currentTime {
     // Called before each frame is rendered
     [self moveAllEraPeopleLoop];
-    [self moveBgIn30secInterval:currentTime];
+    [self moveBgInInterval:currentTime];
     [self moveBgToLast];
 }
 
@@ -74,7 +74,7 @@
     }
 }
 
--(void)moveBgIn30secInterval:(CFTimeInterval)currentTime {
+-(void)moveBgInInterval:(CFTimeInterval)currentTime {
     float interval = INTERVAL;
     if (_nextRunTime==0.0f) {
         _nextRunTime = currentTime+interval;
