@@ -10,7 +10,7 @@
 #import "AppDelegate.h"
 #define BG_SCALE 0.93f
 #define BG_ORIGIN_WIDTH 930
-#define BG_ORIGIN_HIGHT 256
+#define BG_ORIGIN_HIGHT 256 // 背景画像の高さはGameScene.sksの高さ(768)の3分の1(256)にする
 #define INTERVAL 18.0f
 
 @implementation GameScene {
@@ -19,6 +19,8 @@
     NSMutableArray *_bgNodeArray;
     NSMutableDictionary *_peopleNodeArrayDict;
     float _nextRunTime;
+    NSMutableArray *_eraNameArray;
+    NSMutableArray *_bgNameArray;
 }
 
 
@@ -28,6 +30,8 @@
     app = [[NSApplication sharedApplication] delegate];
     _peopleNodeArrayDict = [NSMutableDictionary dictionary];
     _bgNodeArray = [NSMutableArray array];
+    _eraNameArray = [NSMutableArray arrayWithArray:@[@"edo", @"meiji", @"shouwa", @"heisei"]];
+    _bgNameArray = [NSMutableArray array];
     _nextRunTime = 0.0f;
     _isSettingMode = true;
     self.backgroundColor = [NSColor blackColor];
@@ -45,27 +49,29 @@
 }
 
 -(void)addAllEraBg {
-    [self addBgWithEraName:@"edo" atIndex:0];
-    [self addBgWithEraName:@"meiji" atIndex:1];
-    [self addBgWithEraName:@"shouwa" atIndex:2];
-    [self addBgWithEraName:@"heisei" atIndex:3];
+    _bgNameArray = [NSMutableArray arrayWithArray:_eraNameArray]; // 時代名一覧で初期化
+    [_bgNameArray addObject:@"blank"]; // 末尾にblankを追加
+    for (int i=0; i<_bgNameArray.count; i++) {
+        [self addBgWithEraName:_bgNameArray[i] atIndex:i];
+    }
 }
 
 -(void)addAllEraPeople {
-    [self addPeopleWithEraName:@"edo"];
-    [self addPeopleWithEraName:@"meiji"];
-    [self addPeopleWithEraName:@"shouwa"];
+    for (NSString *eraName in _eraNameArray) {
+        [self addPeopleWithEraName:eraName];
+    }
 }
 
 -(void)moveAllEraPeopleOnce {
-    [self movePeopleOnceWithEraName:@"edo"];
-    [self movePeopleOnceWithEraName:@"meiji"];
-    [self movePeopleOnceWithEraName:@"shouwa"];
+    for (NSString *eraName in _eraNameArray) {
+        [self movePeopleOnceWithEraName:eraName];
+    }
 }
+
 -(void)moveAllEraPeopleLoop {
-    [self movePeopleLoopWithEraName:@"edo"];
-    [self movePeopleLoopWithEraName:@"meiji"];
-    [self movePeopleLoopWithEraName:@"shouwa"];
+    for (NSString *eraName in _eraNameArray) {
+        [self movePeopleLoopWithEraName:eraName];
+    }
 }
 
 -(void)moveBgIn30secInterval:(CFTimeInterval)currentTime {
@@ -90,7 +96,8 @@
 
 -(void)moveBgToLast {
     CGSize screenSize = self.frame.size;
-    float positionY = -(screenSize.height/3)/2;
+    NSUInteger bgLastIndex = _bgNameArray.count-1;
+    float positionY = screenSize.height-(BG_ORIGIN_HIGHT*bgLastIndex)-(BG_ORIGIN_HIGHT/2);
     for (SKSpriteNode *bg in _bgNodeArray) {
         if (bg.position.y >= screenSize.height+(screenSize.height/3)/2) {
             bg.position = CGPointMake(bg.position.x, positionY);
@@ -102,8 +109,7 @@
     CGSize screenSize = self.frame.size;
     NSString *bgName = [eraName stringByAppendingString:@"_bg"];
     SKSpriteNode *bg = [SKSpriteNode spriteNodeWithImageNamed:bgName];
-    CGSize bgSize = bg.size;
-    bg.position = CGPointMake(screenSize.width/2, screenSize.height-(bgSize.height*index)-(bgSize.height/2));
+    bg.position = CGPointMake(screenSize.width/2, screenSize.height-(BG_ORIGIN_HIGHT*index)-(BG_ORIGIN_HIGHT/2));
     bg.name = bgName;
     bg.xScale = BG_SCALE;
     bg.yScale = BG_SCALE;

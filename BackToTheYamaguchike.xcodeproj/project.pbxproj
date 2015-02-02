@@ -24,6 +24,9 @@
 		B7D8754A1A7DCB8A0083106B /* shouwa_kodomo.atlas in Resources */ = {isa = PBXBuildFile; fileRef = B7D875471A7DCB8A0083106B /* shouwa_kodomo.atlas */; };
 		B7D8754B1A7DCB8A0083106B /* shouwa_onna.atlas in Resources */ = {isa = PBXBuildFile; fileRef = B7D875481A7DCB8A0083106B /* shouwa_onna.atlas */; };
 		B7D8754C1A7DCB8A0083106B /* shouwa_otoko.atlas in Resources */ = {isa = PBXBuildFile; fileRef = B7D875491A7DCB8A0083106B /* shouwa_otoko.atlas */; };
+		B7E25A451A7F054E0033F441 /* heisei_kodomo.atlas in Resources */ = {isa = PBXBuildFile; fileRef = B7E25A421A7F054E0033F441 /* heisei_kodomo.atlas */; };
+		B7E25A461A7F054E0033F441 /* heisei_onna.atlas in Resources */ = {isa = PBXBuildFile; fileRef = B7E25A431A7F054E0033F441 /* heisei_onna.atlas */; };
+		B7E25A471A7F054E0033F441 /* heisei_otoko.atlas in Resources */ = {isa = PBXBuildFile; fileRef = B7E25A441A7F054E0033F441 /* heisei_otoko.atlas */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +63,9 @@
 		B7D875471A7DCB8A0083106B /* shouwa_kodomo.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = shouwa_kodomo.atlas; sourceTree = "<group>"; };
 		B7D875481A7DCB8A0083106B /* shouwa_onna.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = shouwa_onna.atlas; sourceTree = "<group>"; };
 		B7D875491A7DCB8A0083106B /* shouwa_otoko.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = shouwa_otoko.atlas; sourceTree = "<group>"; };
+		B7E25A421A7F054E0033F441 /* heisei_kodomo.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = heisei_kodomo.atlas; sourceTree = "<group>"; };
+		B7E25A431A7F054E0033F441 /* heisei_onna.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = heisei_onna.atlas; sourceTree = "<group>"; };
+		B7E25A441A7F054E0033F441 /* heisei_otoko.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = heisei_otoko.atlas; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +117,9 @@
 				B7D875471A7DCB8A0083106B /* shouwa_kodomo.atlas */,
 				B7D875481A7DCB8A0083106B /* shouwa_onna.atlas */,
 				B7D875491A7DCB8A0083106B /* shouwa_otoko.atlas */,
+				B7E25A421A7F054E0033F441 /* heisei_kodomo.atlas */,
+				B7E25A431A7F054E0033F441 /* heisei_onna.atlas */,
+				B7E25A441A7F054E0033F441 /* heisei_otoko.atlas */,
 				B71B67921A7A46760056DAC4 /* AppDelegate.h */,
 				B71B67931A7A46760056DAC4 /* AppDelegate.m */,
 				B71B67971A7A46760056DAC4 /* GameScene.h */,
@@ -236,10 +245,13 @@
 				B7D875451A7CED0D0083106B /* meiji_onna.atlas in Resources */,
 				B7D875441A7CED0D0083106B /* meiji_kodomo.atlas in Resources */,
 				B7D8754A1A7DCB8A0083106B /* shouwa_kodomo.atlas in Resources */,
+				B7E25A471A7F054E0033F441 /* heisei_otoko.atlas in Resources */,
 				B7D8754B1A7DCB8A0083106B /* shouwa_onna.atlas in Resources */,
 				B71B679B1A7A46760056DAC4 /* GameScene.sks in Resources */,
 				B71B67C41A7C9C9E0056DAC4 /* edo_otoko.atlas in Resources */,
 				B71B679D1A7A46760056DAC4 /* Images.xcassets in Resources */,
+				B7E25A461A7F054E0033F441 /* heisei_onna.atlas in Resources */,
+				B7E25A451A7F054E0033F441 /* heisei_kodomo.atlas in Resources */,
 				B71B67A01A7A46760056DAC4 /* MainMenu.xib in Resources */,
 				B7D875461A7CED0D0083106B /* meiji_otoko.atlas in Resources */,
 			);

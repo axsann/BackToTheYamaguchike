@@ -44,8 +44,8 @@
     /* Sprite Kit applies additional optimizations to improve rendering performance */
     self.skView.ignoresSiblingOrder = YES;
     
-    self.skView.showsFPS = YES;
-    self.skView.showsNodeCount = YES;
+    self.skView.showsFPS = NO;
+    self.skView.showsNodeCount = NO;
 }
 
 -(NSDictionary *)loadJson {
