@@ -14,5 +14,6 @@
 @property (assign) IBOutlet NSWindow *window;
 @property (assign) IBOutlet SKView *skView;
 @property (strong, nonatomic) NSDictionary *peopleDict;
+@property (strong, nonatomic) NSDictionary *carDict;
 
 @end

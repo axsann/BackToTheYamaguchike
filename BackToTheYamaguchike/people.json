@@ -1,22 +1,22 @@
 {
     "edo": {
-        "edo_kasa": "30.0",
-        "edo_onna": "25.0",
-        "edo_otoko": "20.0"
+        "edo_onna": "35.0",
+        "edo_otoko": "30.0",
+        "edo_kasa": "40.0"
     },
     "meiji": {
-        "meiji_kodomo": "30.0",
-        "meiji_onna": "25.0",
-        "meiji_otoko": "20.0"
+        "meiji_kodomo": "40.0",
+        "meiji_onna": "30.0",
+        "meiji_otoko": "35.0"
     },
     "shouwa": {
-        "shouwa_otoko": "20.0",
-        "shouwa_onna": "25.0",
-        "shouwa_kodomo": "30.0"
+        "shouwa_otoko": "30.0",
+        "shouwa_onna": "35.0",
+        "shouwa_kodomo": "40.0"
     },
     "heisei": {
-        "heisei_kodomo": "30.0",
-        "heisei_onna": "25.0",
-        "heisei_otoko": "20.0"
+        "heisei_kodomo": "35.0",
+        "heisei_onna": "30.0",
+        "heisei_otoko": "25.0"
     }
 }

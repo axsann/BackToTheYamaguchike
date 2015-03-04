@@ -1,0 +1,12 @@
+{
+    "shouwa": {
+        "shouwa_car_left": "70",
+        "shouwa_car_right": "70",
+        "shouwa_train": "45"
+    },
+    "heisei": {
+        "heisei_car_left": "70",
+        "heisei_car_right": "70",
+        "heisei_train": "45"
+    }
+}

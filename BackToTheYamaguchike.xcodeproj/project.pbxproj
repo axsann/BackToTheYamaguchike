@@ -16,8 +16,9 @@
 		B71B67AC1A7A46760056DAC4 /* BackToTheYamaguchikeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B71B67AB1A7A46760056DAC4 /* BackToTheYamaguchikeTests.m */; };
 		B71B67B81A7B66E00056DAC4 /* people.json in Resources */ = {isa = PBXBuildFile; fileRef = B71B67B71A7B66E00056DAC4 /* people.json */; };
 		B73D7A3A1A9CDE2400578A2A /* edo_otoko.atlas in Resources */ = {isa = PBXBuildFile; fileRef = B73D7A391A9CDE2400578A2A /* edo_otoko.atlas */; };
-		B73D7A3E1A9E1A1900578A2A /* shouwa_sobaya.atlas in Resources */ = {isa = PBXBuildFile; fileRef = B73D7A3D1A9E1A1900578A2A /* shouwa_sobaya.atlas */; };
 		B73D7A421A9E1E6400578A2A /* edo_dog.atlas in Resources */ = {isa = PBXBuildFile; fileRef = B73D7A411A9E1E6400578A2A /* edo_dog.atlas */; };
+		B73D7A891AA2A5AA00578A2A /* shouwa_sobaya.atlas in Resources */ = {isa = PBXBuildFile; fileRef = B73D7A881AA2A5AA00578A2A /* shouwa_sobaya.atlas */; };
+		B73D7A8C1AA54A4D00578A2A /* car.json in Resources */ = {isa = PBXBuildFile; fileRef = B73D7A8B1AA54A4D00578A2A /* car.json */; };
 		B797E44A1A96C7D200BDD49B /* edo_kasa.atlas in Resources */ = {isa = PBXBuildFile; fileRef = B797E43E1A96C7D200BDD49B /* edo_kasa.atlas */; };
 		B797E44B1A96C7D200BDD49B /* edo_onna.atlas in Resources */ = {isa = PBXBuildFile; fileRef = B797E43F1A96C7D200BDD49B /* edo_onna.atlas */; };
 		B797E44D1A96C7D200BDD49B /* heisei_kodomo.atlas in Resources */ = {isa = PBXBuildFile; fileRef = B797E4411A96C7D200BDD49B /* heisei_kodomo.atlas */; };
@@ -57,8 +58,9 @@
 		B71B67AB1A7A46760056DAC4 /* BackToTheYamaguchikeTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BackToTheYamaguchikeTests.m; sourceTree = "<group>"; };
 		B71B67B71A7B66E00056DAC4 /* people.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = people.json; sourceTree = "<group>"; };
 		B73D7A391A9CDE2400578A2A /* edo_otoko.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = edo_otoko.atlas; sourceTree = "<group>"; };
-		B73D7A3D1A9E1A1900578A2A /* shouwa_sobaya.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = shouwa_sobaya.atlas; sourceTree = "<group>"; };
 		B73D7A411A9E1E6400578A2A /* edo_dog.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = edo_dog.atlas; sourceTree = "<group>"; };
+		B73D7A881AA2A5AA00578A2A /* shouwa_sobaya.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = shouwa_sobaya.atlas; sourceTree = "<group>"; };
+		B73D7A8B1AA54A4D00578A2A /* car.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = car.json; sourceTree = "<group>"; };
 		B797E43E1A96C7D200BDD49B /* edo_kasa.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = edo_kasa.atlas; sourceTree = "<group>"; };
 		B797E43F1A96C7D200BDD49B /* edo_onna.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = edo_onna.atlas; sourceTree = "<group>"; };
 		B797E4411A96C7D200BDD49B /* heisei_kodomo.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = heisei_kodomo.atlas; sourceTree = "<group>"; };
@@ -111,6 +113,7 @@
 		B71B678F1A7A46760056DAC4 /* BackToTheYamaguchike */ = {
 			isa = PBXGroup;
 			children = (
+				B73D7A881AA2A5AA00578A2A /* shouwa_sobaya.atlas */,
 				B73D7A411A9E1E6400578A2A /* edo_dog.atlas */,
 				B797E43E1A96C7D200BDD49B /* edo_kasa.atlas */,
 				B797E43F1A96C7D200BDD49B /* edo_onna.atlas */,
@@ -124,8 +127,8 @@
 				B797E4471A96C7D200BDD49B /* shouwa_kodomo.atlas */,
 				B797E4481A96C7D200BDD49B /* shouwa_onna.atlas */,
 				B797E4491A96C7D200BDD49B /* shouwa_otoko.atlas */,
-				B73D7A3D1A9E1A1900578A2A /* shouwa_sobaya.atlas */,
 				B71B67B71A7B66E00056DAC4 /* people.json */,
+				B73D7A8B1AA54A4D00578A2A /* car.json */,
 				B71B67921A7A46760056DAC4 /* AppDelegate.h */,
 				B71B67931A7A46760056DAC4 /* AppDelegate.m */,
 				B71B67971A7A46760056DAC4 /* GameScene.h */,
@@ -247,11 +250,12 @@
 				B797E4521A96C7D200BDD49B /* meiji_otoko.atlas in Resources */,
 				B797E4511A96C7D200BDD49B /* meiji_onna.atlas in Resources */,
 				B797E44A1A96C7D200BDD49B /* edo_kasa.atlas in Resources */,
+				B73D7A891AA2A5AA00578A2A /* shouwa_sobaya.atlas in Resources */,
 				B73D7A421A9E1E6400578A2A /* edo_dog.atlas in Resources */,
-				B73D7A3E1A9E1A1900578A2A /* shouwa_sobaya.atlas in Resources */,
 				B71B67B81A7B66E00056DAC4 /* people.json in Resources */,
 				B797E4501A96C7D200BDD49B /* meiji_kodomo.atlas in Resources */,
 				B73D7A3A1A9CDE2400578A2A /* edo_otoko.atlas in Resources */,
+				B73D7A8C1AA54A4D00578A2A /* car.json in Resources */,
 				B797E44B1A96C7D200BDD49B /* edo_onna.atlas in Resources */,
 				B71B679B1A7A46760056DAC4 /* GameScene.sks in Resources */,
 				B797E4551A96C7D200BDD49B /* shouwa_otoko.atlas in Resources */,
