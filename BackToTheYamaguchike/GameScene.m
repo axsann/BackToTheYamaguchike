@@ -11,15 +11,17 @@
 #define BG_SCALE 0.97f
 #define BG_ORIGIN_WIDTH 991
 #define BG_ORIGIN_HIGHT 256 // 背景画像の高さはGameScene.sksの高さ(768)の3分の1(256)にする
-#define BG_MOVE_INTERVAL 35.0f
+#define BG_MOVE_INTERVAL 25.0f
 //#define BG_MOVE_INTERVAL 15.0f // for Debug
 #define BG_MOVE_DURATION 5.0f
 #define PEOPLE_WAIT_DURATION 1.9f
 #define PEOPLE_OFFSET 50.0f
 #define CAR_OFFSET 120.0f
 #define PEOPLE_WALK_TIME_PER_FRAME 0.4f
-#define DOG_ANIMATION_TIME_PER_FRAME 0.8f
-#define SOBAYA_ANIMATION_TIME_PER_FRAME 0.2f
+#define TACHIBANASHI_R_ANIMATION_TIME_PER_FRAME 0.8f
+#define TACHIBANASHI_L_ANIMATION_TIME_PER_FRAME 1.2f
+#define BIKE_ANIMATION_TIME_PER_FRAME 0.2f
+#define BIKE_SPEED_RATE 3.6f
 #define SHOW_YEAR_DURATION 0.7f
 #define HIDE_YEAR_DURATION 0.6f
 
@@ -32,13 +34,27 @@
     NSMutableDictionary *_carNodeArrayDict;
     NSMutableDictionary *_walkActionDict;
     NSMutableDictionary *_doesYearShowDict;
-    SKSpriteNode *_dog;
-    SKSpriteNode *_sobaya;
-    SKAction *_dogAnimation;
-    SKAction *_sobayaAnimation;
+    SKSpriteNode *_edoDogTono;
+    SKSpriteNode *_edoTachibanashi;
+    SKSpriteNode *_edoHikyakuOkami;
+    SKSpriteNode *_edoShounin;
+    SKSpriteNode *_meijiJinriki;
+    SKSpriteNode *_meijiHitodakari;
+    SKSpriteNode *_meijiTachibanashi;
+    SKSpriteNode *_shouwaSobaya;
+    SKSpriteNode *_heiseiGentsuki;
+    SKAction *_edoDogTonoAnimation;
+    SKAction *_edoTachibanashiAnimation;
+    SKAction *_edoHikyakuOkamiAnimation;
+    SKAction *_edoShouninAnimation;
+    SKAction *_meijiJinrikiAnimation;
+    SKAction *_meijiHitodakariAnimation;
+    SKAction *_meijiTachibanashiAnimation;
+    SKAction *_shouwaSobayaAnimation;
     float _nextRunTime;
     float _leftEdgeX;
     float _rightEdgeX;
+    float _standardSpeed;
     NSMutableArray *_eraNameArray;
     NSMutableArray *_bgNameArray;
 }
@@ -60,6 +76,7 @@
     _isSettingMode = true;
     _rightEdgeX = BG_ORIGIN_WIDTH/2.0f;
     _leftEdgeX = -(BG_ORIGIN_WIDTH/2.0f);
+    _standardSpeed = BG_ORIGIN_WIDTH/30.0f;
     
     for (int i=0; i<_eraNameArray.count; i++) {
         [_doesYearShowDict setObject:[NSNumber numberWithBool:YES] forKey:_eraNameArray[i]];
@@ -69,9 +86,16 @@
     self.view.window.backgroundColor = [NSColor grayColor];
     [self addAllBg];
     [self addYamaguchike];
-    [self addDogToEdo];
+    [self addDogTonoToEdo];
+    [self addHikyakuOkamiToEdo];
+    [self addTachibanashiToEdo];
+    [self addShouninToEdo];
+    [self addHitodakariToMeiji];
+    [self addTachibanashiToMeiji];
     [self addAllCar];
+    [self addJinrikiToMeiji];
     [self addSobayaToShouwa];
+    [self addGentsukiToHeisei];
     [self addAllPeople];
     [self addAllYear];
     [self addTwoGrayMask];
@@ -80,9 +104,16 @@
 
 -(void)update:(CFTimeInterval)currentTime {
     // Called before each frame is rendered
-    [self animateDogOnEdo];
+    [self animateDogTonoOnEdo];
+    [self animateTachibanashiOnEdo];
+    [self animateHikyakuOkamiOnEdo];
+    [self animateShouninOnEdo];
+    [self animateHitodakariOnMeiji];
+    [self animateTachibanashiOnMeiji];
     [self moveAllCar];
+    [self moveJinrikiOnMeiji];
     [self moveSobayaOnShouwa];
+    [self moveGentsukiOnHeisei];
     [self moveAllPeople];
     [self moveBgInInterval:currentTime];
     [self moveBgToLast];
@@ -113,6 +144,7 @@
 
 -(void)addAllCar {
     [self addCarWithEraName:@"shouwa"];
+    [self addCarWithEraName:@"heisei"];
 }
 
 -(void)addYearWithEraName:eraName atIndex:(NSInteger)index {
@@ -254,6 +286,7 @@
 
 -(void)moveAllCar {
     [self moveCarWithEraName:@"shouwa"];
+    [self moveCarWithEraName:@"heisei"];
 }
 
  
@@ -290,28 +323,171 @@
 
 }
 
--(void)addDogToEdo {
+-(void)addDogTonoToEdo {
     SKSpriteNode *bg = _bgNodeDict[@"edo"];
-    NSString *dogName = @"edo_dog";
-    SKTextureAtlas *atlas = [SKTextureAtlas atlasNamed:dogName]; // アトラスを取得
+    NSString *dogTonoName = @"edo_dog_tono";
+    SKTextureAtlas *atlas = [SKTextureAtlas atlasNamed:dogTonoName]; // アトラスを取得
     NSMutableArray *textureArray = [NSMutableArray array]; //アニメ用のテクスチャを格納する配列
     for (int j=0; j<atlas.textureNames.count; j++) {
-        NSString *textureName = [dogName stringByAppendingFormat:@"%d", j]; // テクスチャの名前(pngの名前)を指定
+        NSString *textureName = [dogTonoName stringByAppendingFormat:@"%d", j]; // テクスチャの名前(pngの名前)を指定
         SKTexture *texture = [atlas textureNamed:textureName];
         [textureArray addObject:texture]; // アニメ用のテクスチャ配列に格納
     }
     // キャラクターを配置
-    _dog= [SKSpriteNode spriteNodeWithTexture:textureArray[0]];
-    _dog.name = dogName;
+    _edoDogTono= [SKSpriteNode spriteNodeWithTexture:textureArray[0]];
+    _edoDogTono.name = dogTonoName;
     float positionX = -(BG_ORIGIN_WIDTH/3);
-    float positionY = -(BG_ORIGIN_HIGHT/7);
-    _dog.position = CGPointMake(positionX, positionY);
-    [bg addChild:_dog];
+    float positionY = -(BG_ORIGIN_HIGHT/50);
+    _edoDogTono.position = CGPointMake(positionX, positionY);
+    [bg addChild:_edoDogTono];
     
     // アニメーションを作成
-    SKAction *dogAnimationOnce = [SKAction animateWithTextures:textureArray timePerFrame:DOG_ANIMATION_TIME_PER_FRAME];
-    _dogAnimation = [SKAction repeatActionForever:dogAnimationOnce];
+    SKAction *dogTonoAnimationOnce = [SKAction animateWithTextures:textureArray timePerFrame:TACHIBANASHI_R_ANIMATION_TIME_PER_FRAME];
+    _edoDogTonoAnimation = [SKAction repeatActionForever:dogTonoAnimationOnce];
+    
+}
 
+-(void)addTachibanashiToEdo {
+    SKSpriteNode *bg = _bgNodeDict[@"edo"];
+    NSString *tachibanashiName = @"edo_tachibanashi";
+    SKTextureAtlas *atlas = [SKTextureAtlas atlasNamed:tachibanashiName]; // アトラスを取得
+    NSMutableArray *textureArray = [NSMutableArray array]; //アニメ用のテクスチャを格納する配列
+    for (int j=0; j<atlas.textureNames.count; j++) {
+        NSString *textureName = [tachibanashiName stringByAppendingFormat:@"%d", j]; // テクスチャの名前(pngの名前)を指定
+        SKTexture *texture = [atlas textureNamed:textureName];
+        [textureArray addObject:texture]; // アニメ用のテクスチャ配列に格納
+    }
+    // キャラクターを配置
+    _edoTachibanashi= [SKSpriteNode spriteNodeWithTexture:textureArray[0]];
+    _edoTachibanashi.name = tachibanashiName;
+    float positionX = (BG_ORIGIN_WIDTH/3);
+    float positionY = -(BG_ORIGIN_HIGHT/11);
+    _edoTachibanashi.position = CGPointMake(positionX, positionY);
+    [bg addChild:_edoTachibanashi];
+    
+    // アニメーションを作成
+    SKAction *tachibanashiAnimationOnce = [SKAction animateWithTextures:textureArray timePerFrame:TACHIBANASHI_L_ANIMATION_TIME_PER_FRAME];
+    _edoTachibanashiAnimation = [SKAction repeatActionForever:tachibanashiAnimationOnce];
+    
+}
+
+-(void)addShouninToEdo {
+    SKSpriteNode *bg = _bgNodeDict[@"edo"];
+    NSString *shouninName = @"edo_shounin";
+    SKTextureAtlas *atlas = [SKTextureAtlas atlasNamed:shouninName]; // アトラスを取得
+    NSMutableArray *textureArray = [NSMutableArray array]; //アニメ用のテクスチャを格納する配列
+    for (int j=0; j<atlas.textureNames.count; j++) {
+        NSString *textureName = [shouninName stringByAppendingFormat:@"%d", j]; // テクスチャの名前(pngの名前)を指定
+        SKTexture *texture = [atlas textureNamed:textureName];
+        [textureArray addObject:texture]; // アニメ用のテクスチャ配列に格納
+    }
+    // キャラクターを配置
+    _edoShounin = [SKSpriteNode spriteNodeWithTexture:textureArray[0]];
+    _edoShounin.name = shouninName;
+    float positionX = -(BG_ORIGIN_WIDTH/2.4f);
+    float positionY = -(BG_ORIGIN_HIGHT/11);
+    _edoShounin.position = CGPointMake(positionX, positionY);
+    [bg addChild:_edoShounin];
+    
+    // アニメーションを作成
+    SKAction *shouninAnimationOnce = [SKAction animateWithTextures:textureArray timePerFrame:TACHIBANASHI_L_ANIMATION_TIME_PER_FRAME];
+    _edoShouninAnimation = [SKAction repeatActionForever:shouninAnimationOnce];
+    
+}
+
+-(void)addTachibanashiToMeiji {
+    SKSpriteNode *bg = _bgNodeDict[@"meiji"];
+    NSString *tachibanashiName = @"meiji_tachibanashi";
+    SKTextureAtlas *atlas = [SKTextureAtlas atlasNamed:tachibanashiName]; // アトラスを取得
+    NSMutableArray *textureArray = [NSMutableArray array]; //アニメ用のテクスチャを格納する配列
+    for (int j=0; j<atlas.textureNames.count; j++) {
+        NSString *textureName = [tachibanashiName stringByAppendingFormat:@"%d", j]; // テクスチャの名前(pngの名前)を指定
+        SKTexture *texture = [atlas textureNamed:textureName];
+        [textureArray addObject:texture]; // アニメ用のテクスチャ配列に格納
+    }
+    // キャラクターを配置
+    _meijiTachibanashi = [SKSpriteNode spriteNodeWithTexture:textureArray[0]];
+    _meijiTachibanashi.name = tachibanashiName;
+    float positionX = -(BG_ORIGIN_WIDTH/3.5);
+    float positionY = -(BG_ORIGIN_HIGHT/11);
+    _meijiTachibanashi.position = CGPointMake(positionX, positionY);
+    [bg addChild:_meijiTachibanashi];
+    
+    // アニメーションを作成
+    SKAction *tachibanashiAnimationOnce = [SKAction animateWithTextures:textureArray timePerFrame:TACHIBANASHI_R_ANIMATION_TIME_PER_FRAME];
+    _meijiTachibanashiAnimation = [SKAction repeatActionForever:tachibanashiAnimationOnce];
+    
+}
+
+-(void)addHitodakariToMeiji {
+    SKSpriteNode *bg = _bgNodeDict[@"meiji"];
+    NSString *hitodakariName = @"meiji_hitodakari";
+    SKTextureAtlas *atlas = [SKTextureAtlas atlasNamed:hitodakariName]; // アトラスを取得
+    NSMutableArray *textureArray = [NSMutableArray array]; //アニメ用のテクスチャを格納する配列
+    for (int j=0; j<atlas.textureNames.count; j++) {
+        NSString *textureName = [hitodakariName stringByAppendingFormat:@"%d", j]; // テクスチャの名前(pngの名前)を指定
+        SKTexture *texture = [atlas textureNamed:textureName];
+        [textureArray addObject:texture]; // アニメ用のテクスチャ配列に格納
+    }
+    // キャラクターを配置
+    _meijiHitodakari= [SKSpriteNode spriteNodeWithTexture:textureArray[0]];
+    _meijiHitodakari.name = hitodakariName;
+    float positionX = (BG_ORIGIN_WIDTH/2.5f);
+    float positionY = -(BG_ORIGIN_HIGHT/11);
+    _meijiHitodakari.position = CGPointMake(positionX, positionY);
+    [bg addChild:_meijiHitodakari];
+    
+    // アニメーションを作成
+    SKAction *hitodakariAnimationOnce = [SKAction animateWithTextures:textureArray timePerFrame:TACHIBANASHI_L_ANIMATION_TIME_PER_FRAME];
+    _meijiHitodakariAnimation = [SKAction repeatActionForever:hitodakariAnimationOnce];
+    
+}
+
+-(void)addHikyakuOkamiToEdo {
+    SKSpriteNode *bg = _bgNodeDict[@"edo"];
+    NSString *hikyakuOkamiName = @"edo_hikyaku_okami";
+    SKTextureAtlas *atlas = [SKTextureAtlas atlasNamed:hikyakuOkamiName]; // アトラスを取得
+    NSMutableArray *textureArray = [NSMutableArray array]; //アニメ用のテクスチャを格納する配列
+    for (int j=0; j<atlas.textureNames.count; j++) {
+        NSString *textureName = [hikyakuOkamiName stringByAppendingFormat:@"%d", j]; // テクスチャの名前(pngの名前)を指定
+        SKTexture *texture = [atlas textureNamed:textureName];
+        [textureArray addObject:texture]; // アニメ用のテクスチャ配列に格納
+    }
+    // キャラクターを配置
+    _edoHikyakuOkami= [SKSpriteNode spriteNodeWithTexture:textureArray[0]];
+    _edoHikyakuOkami.name = hikyakuOkamiName;
+    float positionX = -(BG_ORIGIN_WIDTH/5);
+    float positionY = -(BG_ORIGIN_HIGHT/10);
+    _edoHikyakuOkami.position = CGPointMake(positionX, positionY);
+    [bg addChild:_edoHikyakuOkami];
+    
+    // アニメーションを作成
+    SKAction *hikyakuOkamiAnimationOnce = [SKAction animateWithTextures:textureArray timePerFrame:TACHIBANASHI_R_ANIMATION_TIME_PER_FRAME];
+    _edoHikyakuOkamiAnimation = [SKAction repeatActionForever:hikyakuOkamiAnimationOnce];
+    
+}
+-(void)addJinrikiToMeiji {
+    SKSpriteNode *bg = _bgNodeDict[@"meiji"];
+    NSString *jinrikiName = @"meiji_jinriki";
+    SKTextureAtlas *atlas = [SKTextureAtlas atlasNamed:jinrikiName]; // アトラスを取得
+    NSMutableArray *textureArray = [NSMutableArray array]; //アニメ用のテクスチャを格納する配列
+    for (int j=0; j<atlas.textureNames.count; j++) {
+        NSString *textureName = [jinrikiName stringByAppendingFormat:@"%d", j]; // テクスチャの名前(pngの名前)を指定
+        SKTexture *texture = [atlas textureNamed:textureName];
+        [textureArray addObject:texture]; // アニメ用のテクスチャ配列に格納
+    }
+    // キャラクターを配置
+    _meijiJinriki = [SKSpriteNode spriteNodeWithTexture:textureArray[0]];
+    _meijiJinriki.name = jinrikiName;
+    float positionX = (int)(arc4random() % (BG_ORIGIN_WIDTH)) + (int)(-(BG_ORIGIN_WIDTH/2)); // 位置を乱数にする
+    float positionY = -(BG_ORIGIN_HIGHT/10);
+    _meijiJinriki.position = CGPointMake(positionX, positionY);
+    [bg addChild:_meijiJinriki];
+    
+    // アニメーションを作成
+    SKAction *jinrikiAnimationOnce = [SKAction animateWithTextures:textureArray timePerFrame:BIKE_ANIMATION_TIME_PER_FRAME];
+    _meijiJinrikiAnimation = [SKAction repeatActionForever:jinrikiAnimationOnce];
+    
 }
 
 -(void)addSobayaToShouwa {
@@ -325,19 +501,30 @@
         [textureArray addObject:texture]; // アニメ用のテクスチャ配列に格納
     }
     // キャラクターを配置
-    _sobaya= [SKSpriteNode spriteNodeWithTexture:textureArray[0]];
-    _sobaya.name = sobayaName;
-    float positionX = (BG_ORIGIN_WIDTH/3);
+    _shouwaSobaya= [SKSpriteNode spriteNodeWithTexture:textureArray[0]];
+    _shouwaSobaya.name = sobayaName;
+    float positionX = (int)(arc4random() % (BG_ORIGIN_WIDTH)) + (int)(-(BG_ORIGIN_WIDTH/2)); // 位置を乱数にする
     float positionY = -(BG_ORIGIN_HIGHT/7);
-    _sobaya.position = CGPointMake(positionX, positionY);
-    [bg addChild:_sobaya];
+    _shouwaSobaya.position = CGPointMake(positionX, positionY);
+    [bg addChild:_shouwaSobaya];
     
     // アニメーションを作成
-    SKAction *sobayaAnimationOnce = [SKAction animateWithTextures:textureArray timePerFrame:SOBAYA_ANIMATION_TIME_PER_FRAME];
-    _sobayaAnimation = [SKAction repeatActionForever:sobayaAnimationOnce];
+    SKAction *sobayaAnimationOnce = [SKAction animateWithTextures:textureArray timePerFrame:BIKE_ANIMATION_TIME_PER_FRAME];
+    _shouwaSobayaAnimation = [SKAction repeatActionForever:sobayaAnimationOnce];
     
 }
+-(void)addGentsukiToHeisei {
+    SKSpriteNode *bg = _bgNodeDict[@"heisei"];
+    NSString *gentsukiName = @"heisei_gentsuki";
 
+    // キャラクターを配置
+    _heiseiGentsuki = [SKSpriteNode spriteNodeWithImageNamed:gentsukiName];
+    _heiseiGentsuki.name = gentsukiName;
+    float positionX = (int)(arc4random() % (BG_ORIGIN_WIDTH)) + (int)(-(BG_ORIGIN_WIDTH/2)); // 位置を乱数にする
+    float positionY = -(BG_ORIGIN_HIGHT/7);
+    _heiseiGentsuki.position = CGPointMake(positionX, positionY);
+    [bg addChild:_heiseiGentsuki];
+}
 -(void)moveCarWithEraName:(NSString *)eraName {
     SKSpriteNode *bg = _bgNodeDict[eraName];
     NSMutableArray *carNodeArray = _carNodeArrayDict[eraName];
@@ -351,11 +538,11 @@
             
             if (![car hasActions]) {
                 if ([car.name hasSuffix:@"right"]) {
-                    SKAction *moveRightAction = [self getMoveRightActionWithNode:car speed:carSpeedRate offset:CAR_OFFSET];
+                    SKAction *moveRightAction = [self getMoveRightActionWithNode:car speedRate:carSpeedRate offset:CAR_OFFSET];
                     SKAction *actionSequence = [SKAction sequence:@[actionWait, moveRightAction]];
                     [car runAction:actionSequence];
                 } else {
-                    SKAction *moveLeftAction = [self getMoveLeftActionWithNode:car speed:carSpeedRate offset:CAR_OFFSET];
+                    SKAction *moveLeftAction = [self getMoveLeftActionWithNode:car speedRate:carSpeedRate offset:CAR_OFFSET];
                     SKAction *actionSequence = [SKAction sequence:@[actionWait, moveLeftAction]];
                     [car runAction:actionSequence];
                     
@@ -365,14 +552,14 @@
                 
                 if (car.position.x >= _rightEdgeX+CAR_OFFSET) {
                     car.position = CGPointMake(_leftEdgeX-CAR_OFFSET-(BG_ORIGIN_WIDTH/2), car.position.y);
-                    SKAction *moveRightAction = [self getMoveRightActionWithNode:car speed:carSpeedRate offset:CAR_OFFSET];
+                    SKAction *moveRightAction = [self getMoveRightActionWithNode:car speedRate:carSpeedRate offset:CAR_OFFSET];
                     [car runAction:moveRightAction];
                 }
             }else {
 
                 if (car.position.x <= _leftEdgeX-CAR_OFFSET) {
                     car.position = CGPointMake(_rightEdgeX+CAR_OFFSET+(BG_ORIGIN_WIDTH/2), car.position.y);
-                    SKAction *moveLeftAction = [self getMoveLeftActionWithNode:car speed:carSpeedRate offset:CAR_OFFSET];
+                    SKAction *moveLeftAction = [self getMoveLeftActionWithNode:car speedRate:carSpeedRate offset:CAR_OFFSET];
                     [car runAction:moveLeftAction];
                 }
             }
@@ -382,6 +569,33 @@
         }
         
     }
+}
+
+-(void)moveGentsukiOnHeisei {
+    SKSpriteNode *bg = _bgNodeDict[@"heisei"];
+    float gentsukiSpeedRate = BIKE_SPEED_RATE;
+    // 真ん中に来たら歩く
+    if ([self isBgCenter:bg.position.y]) {
+        SKAction *actionWait = [SKAction waitForDuration:PEOPLE_WAIT_DURATION]; // 指定した秒数待つ
+        if (![_heiseiGentsuki hasActions]) {
+                SKAction *moveLeftAction = [self getMoveLeftActionWithNode:_heiseiGentsuki speedRate:gentsukiSpeedRate offset:CAR_OFFSET];
+                SKAction *actionSequence = [SKAction sequence:@[actionWait, moveLeftAction]];
+                [_heiseiGentsuki runAction:actionSequence];
+                
+        }
+
+            
+        if (_heiseiGentsuki.position.x <= _leftEdgeX-CAR_OFFSET) {
+            _heiseiGentsuki.position = CGPointMake(_rightEdgeX+CAR_OFFSET+(BG_ORIGIN_WIDTH), _heiseiGentsuki.position.y);
+            SKAction *moveLeftAction = [self getMoveLeftActionWithNode:_heiseiGentsuki speedRate:gentsukiSpeedRate offset:CAR_OFFSET];
+            [_heiseiGentsuki runAction:moveLeftAction];
+        }
+        
+    }else {
+        [_heiseiGentsuki removeAllActions];
+    }
+        
+    
 }
 
 -(void)movePeopleWithEraName:(NSString *)eraName {
@@ -396,13 +610,13 @@
             
             if (![people hasActions]) {
                 if ([self isPeopleFacingLeft:people]) {
-                    SKAction *moveLeftAction = [self getMoveLeftActionWithNode:people speed:peopleSpeedRate offset:PEOPLE_OFFSET];
+                    SKAction *moveLeftAction = [self getMoveLeftActionWithNode:people speedRate:peopleSpeedRate offset:PEOPLE_OFFSET];
                     SKAction *actionGroup = [SKAction group:@[walkAction, moveLeftAction]];
                     SKAction *actionSequence = [SKAction sequence:@[actionWait, actionGroup]];
                     [people runAction:actionSequence];
                     
                 }else if ([self isPeopleFacingRight:people]) {
-                    SKAction *moveRightAction = [self getMoveRightActionWithNode:people speed:peopleSpeedRate offset:PEOPLE_OFFSET];
+                    SKAction *moveRightAction = [self getMoveRightActionWithNode:people speedRate:peopleSpeedRate offset:PEOPLE_OFFSET];
                     SKAction *actionGroup = [SKAction group:@[walkAction, moveRightAction]];
                     SKAction *actionSequence = [SKAction sequence:@[actionWait, actionGroup]];
                     [people runAction:actionSequence];
@@ -411,11 +625,11 @@
             
             // 端を超えたら折り返す
             if (people.position.x >= _rightEdgeX+PEOPLE_OFFSET) {
-                SKAction *moveLeftAction = [self getMoveLeftActionWithNode:people speed:peopleSpeedRate offset:PEOPLE_OFFSET];
+                SKAction *moveLeftAction = [self getMoveLeftActionWithNode:people speedRate:peopleSpeedRate offset:PEOPLE_OFFSET];
                 [people runAction:moveLeftAction];
             }else if (people.position.x <= _leftEdgeX-PEOPLE_OFFSET) {
                 
-                SKAction *moveRightAction = [self getMoveRightActionWithNode:people speed:peopleSpeedRate offset:PEOPLE_OFFSET];
+                SKAction *moveRightAction = [self getMoveRightActionWithNode:people speedRate:peopleSpeedRate offset:PEOPLE_OFFSET];
                 [people runAction:moveRightAction];
             }
         }else {
@@ -428,38 +642,127 @@
 -(void)moveSobayaOnShouwa {
     NSString *eraName = @"shouwa";
     SKSpriteNode *bg = _bgNodeDict[eraName];
-    float sobayaSpeed = 100;
+    float sobayaSpeedRate = BIKE_SPEED_RATE;
         // 真ん中に来たら歩く
         if ([self isBgCenter:bg.position.y]) {
             
             SKAction *actionWait = [SKAction waitForDuration:PEOPLE_WAIT_DURATION]; // 指定した秒数待つ
             
-            if (![_sobaya hasActions]) {
-                    SKAction *moveLeftAction = [self getMoveLeftActionWithNode:_sobaya speed:sobayaSpeed offset:PEOPLE_OFFSET];
-                    SKAction *actionGroup = [SKAction group:@[_sobayaAnimation, moveLeftAction]];
+            if (![_shouwaSobaya hasActions]) {
+                    SKAction *moveLeftAction = [self getMoveLeftActionWithNode:_shouwaSobaya speedRate:sobayaSpeedRate offset:CAR_OFFSET];
+                    SKAction *actionGroup = [SKAction group:@[_shouwaSobayaAnimation, moveLeftAction]];
                     SKAction *actionSequence = [SKAction sequence:@[actionWait, actionGroup]];
-                    [_sobaya runAction:actionSequence];
+                    [_shouwaSobaya runAction:actionSequence];
             }
-            if (_sobaya.position.x <= _leftEdgeX-PEOPLE_OFFSET) {
-                _sobaya.position = CGPointMake(_rightEdgeX+PEOPLE_OFFSET+(BG_ORIGIN_WIDTH/2), _sobaya.position.y);
-                SKAction *moveLeftAction = [self getMoveLeftActionWithNode:_sobaya speed:sobayaSpeed offset:PEOPLE_OFFSET];
-                [_sobaya runAction:moveLeftAction];
+            if (_shouwaSobaya.position.x <= _leftEdgeX-CAR_OFFSET) {
+                _shouwaSobaya.position = CGPointMake(_rightEdgeX+CAR_OFFSET+(BG_ORIGIN_WIDTH), _shouwaSobaya.position.y);
+                SKAction *moveLeftAction = [self getMoveLeftActionWithNode:_shouwaSobaya speedRate:sobayaSpeedRate offset:CAR_OFFSET];
+                [_shouwaSobaya runAction:moveLeftAction];
             }
 
         }else {
-            [_sobaya removeAllActions];
+            [_shouwaSobaya removeAllActions];
         }
+}
+-(void)moveJinrikiOnMeiji {
+    NSString *eraName = @"meiji";
+    SKSpriteNode *bg = _bgNodeDict[eraName];
+    float jinrikiSpeedRate = BIKE_SPEED_RATE;
+    // 真ん中に来たら歩く
+    if ([self isBgCenter:bg.position.y]) {
+        
+        SKAction *actionWait = [SKAction waitForDuration:PEOPLE_WAIT_DURATION]; // 指定した秒数待つ
+        
+        if (![_meijiJinriki hasActions]) {
+            SKAction *moveLeftAction = [self getMoveLeftActionWithNode:_meijiJinriki speedRate:jinrikiSpeedRate offset:CAR_OFFSET];
+            SKAction *actionGroup = [SKAction group:@[_meijiJinrikiAnimation, moveLeftAction]];
+            SKAction *actionSequence = [SKAction sequence:@[actionWait, actionGroup]];
+            [_meijiJinriki runAction:actionSequence];
+        }
+        if (_meijiJinriki.position.x <= _leftEdgeX-CAR_OFFSET) {
+            _meijiJinriki.position = CGPointMake(_rightEdgeX+CAR_OFFSET+(BG_ORIGIN_WIDTH), _meijiJinriki.position.y);
+            SKAction *moveLeftAction = [self getMoveLeftActionWithNode:_meijiJinriki speedRate:jinrikiSpeedRate offset:CAR_OFFSET];
+            [_meijiJinriki runAction:moveLeftAction];
+        }
+        
+    }else {
+        [_meijiJinriki removeAllActions];
+    }
 }
 
 
--(void)animateDogOnEdo {
+-(void)animateDogTonoOnEdo {
     SKSpriteNode *bg = _bgNodeDict[@"edo"];
     if ([self isBgCenter:bg.position.y]) {
-        if (![_dog hasActions]) {
-            [_dog runAction:_dogAnimation];
+        SKAction *actionWait = [SKAction waitForDuration:PEOPLE_WAIT_DURATION]; // 指定した秒数待つ
+        if (![_edoDogTono hasActions]) {
+            SKAction *actionSequence = [SKAction sequence:@[actionWait, _edoDogTonoAnimation]];
+            [_edoDogTono runAction:actionSequence];
         }
     }else {
-            [_dog removeAllActions];
+            [_edoDogTono removeAllActions];
+    }
+}
+-(void)animateTachibanashiOnEdo {
+    SKSpriteNode *bg = _bgNodeDict[@"edo"];
+    if ([self isBgCenter:bg.position.y]) {
+        SKAction *actionWait = [SKAction waitForDuration:PEOPLE_WAIT_DURATION]; // 指定した秒数待つ
+        if (![_edoTachibanashi hasActions]) {
+            SKAction *actionSequence = [SKAction sequence:@[actionWait, _edoTachibanashiAnimation]];
+            [_edoTachibanashi runAction:actionSequence];
+        }
+    }else {
+        [_edoTachibanashi removeAllActions];
+    }
+}
+-(void)animateShouninOnEdo {
+    SKSpriteNode *bg = _bgNodeDict[@"edo"];
+    if ([self isBgCenter:bg.position.y]) {
+        SKAction *actionWait = [SKAction waitForDuration:PEOPLE_WAIT_DURATION]; // 指定した秒数待つ
+        if (![_edoShounin hasActions]) {
+            SKAction *actionSequence = [SKAction sequence:@[actionWait, _edoShouninAnimation]];
+            [_edoShounin runAction:actionSequence];
+        }
+    }else {
+        [_edoShounin removeAllActions];
+    }
+}
+
+-(void)animateTachibanashiOnMeiji {
+    SKSpriteNode *bg = _bgNodeDict[@"meiji"];
+    if ([self isBgCenter:bg.position.y]) {
+        SKAction *actionWait = [SKAction waitForDuration:PEOPLE_WAIT_DURATION]; // 指定した秒数待つ
+        if (![_meijiTachibanashi hasActions]) {
+            SKAction *actionSequence = [SKAction sequence:@[actionWait, _meijiTachibanashiAnimation]];
+            [_meijiTachibanashi runAction:actionSequence];
+        }
+    }else {
+        [_meijiTachibanashi removeAllActions];
+    }
+}
+-(void)animateHitodakariOnMeiji {
+    SKSpriteNode *bg = _bgNodeDict[@"meiji"];
+    if ([self isBgCenter:bg.position.y]) {
+        SKAction *actionWait = [SKAction waitForDuration:PEOPLE_WAIT_DURATION]; // 指定した秒数待つ
+        if (![_meijiHitodakari hasActions]) {
+            SKAction *actionSequence = [SKAction sequence:@[actionWait, _meijiHitodakariAnimation]];
+            [_meijiHitodakari runAction:actionSequence];
+        }
+    }else {
+        [_meijiHitodakari removeAllActions];
+    }
+}
+
+-(void)animateHikyakuOkamiOnEdo {
+    SKSpriteNode *bg = _bgNodeDict[@"edo"];
+    if ([self isBgCenter:bg.position.y]) {
+        SKAction *actionWait = [SKAction waitForDuration:PEOPLE_WAIT_DURATION]; // 指定した秒数待つ
+        if (![_edoHikyakuOkami hasActions]) {
+            SKAction *actionSequence = [SKAction sequence:@[actionWait, _edoHikyakuOkamiAnimation]];
+            [_edoHikyakuOkami runAction:actionSequence];
+        }
+    }else {
+        [_edoHikyakuOkami removeAllActions];
     }
 }
 
@@ -501,16 +804,18 @@
     return carSpeedRate;
 }
 
--(SKAction *)getMoveLeftActionWithNode:(SKSpriteNode *)node speed:(float)speed offset:(float)offset {
-    float distance = fabs(node.position.x - _leftEdgeX-offset);
+-(SKAction *)getMoveLeftActionWithNode:(SKSpriteNode *)node speedRate:(float)speedRate offset:(float)offset {
+    float speed = speedRate * _standardSpeed;
+    float distance = fabs(node.position.x - (_leftEdgeX-offset));
     float moveDuration = distance / speed;
     node.xScale = fabs(node.xScale);
     SKAction *moveLeftAction = [SKAction moveToX:_leftEdgeX-offset duration:moveDuration];
     return moveLeftAction;
 }
 
--(SKAction *)getMoveRightActionWithNode:(SKSpriteNode *)node speed:(float)speed offset:(float)offset {
-    float distance = fabs(node.position.x - _rightEdgeX+offset);
+-(SKAction *)getMoveRightActionWithNode:(SKSpriteNode *)node speedRate:(float)speedRate offset:(float)offset {
+    float speed = speedRate * _standardSpeed;
+    float distance = fabs(node.position.x - (_rightEdgeX+offset));
     float moveDuration = distance / speed;
     node.xScale = fabs(node.xScale)*-1;
     SKAction *moveRightAction = [SKAction moveToX:_rightEdgeX+offset duration:moveDuration];
