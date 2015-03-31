@@ -336,7 +336,7 @@
     // キャラクターを配置
     _edoDogTono= [SKSpriteNode spriteNodeWithTexture:textureArray[0]];
     _edoDogTono.name = dogTonoName;
-    float positionX = -(BG_ORIGIN_WIDTH/3);
+    float positionX = -(BG_ORIGIN_WIDTH/2.3);
     float positionY = -(BG_ORIGIN_HIGHT/50);
     _edoDogTono.position = CGPointMake(positionX, positionY);
     [bg addChild:_edoDogTono];
@@ -384,7 +384,7 @@
     // キャラクターを配置
     _edoShounin = [SKSpriteNode spriteNodeWithTexture:textureArray[0]];
     _edoShounin.name = shouninName;
-    float positionX = -(BG_ORIGIN_WIDTH/2.4f);
+    float positionX = -(BG_ORIGIN_WIDTH/3.2f);
     float positionY = -(BG_ORIGIN_HIGHT/11);
     _edoShounin.position = CGPointMake(positionX, positionY);
     [bg addChild:_edoShounin];
